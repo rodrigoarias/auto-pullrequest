@@ -1,0 +1,23 @@
+name: 'Create Pull Request'
+description: 'Auto create pull request from source to base'
+inputs:
+  git-token:
+    description: 'Token able to create Pull Requests'
+    required: true
+  base-branch:
+    description: 'The branch where you want your changes'
+    required: true
+  source-branch:
+    description: 'The branch name where the changes are'
+    required: true
+  title:
+    description: 'The title of the PR'
+    required: false
+    default: 'Auto created Pull Request'
+  body:
+    description: 'The body of the PR'
+    required: false
+    default: 'This PR was created by a Github Action'
+runs:
+  using: 'node16'
+  main: 'index.js'
