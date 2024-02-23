@@ -3,14 +3,18 @@ const github = require('@actions/github')
 
 const main = async (workspace) => {
 	const myToken = core.getInput('git-token');
+	const title = core.getInput('title');
+	const body = core.getInput('body');
 	const octokit = github.getOctokit(myToken);
 
 	// console.log(context.paylo)
 
 	console.log('hi dude');
-	console.log(JSON.stringify(github.context));
+	//console.log(JSON.stringify(github.context));
 	console.log('here we are');
-	console.log(JSON.stringify(github.context.payload));
+	//console.log(JSON.stringify(github.context.payload));
+	console.log(github.context.ref);
+	octokit.create_pull_request("rodrigoarias/playground-javascript", "master", "release/1", 
 
 
 	// const committer =  {
