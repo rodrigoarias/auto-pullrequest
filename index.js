@@ -7,6 +7,9 @@ const main = async (workspace) => {
 
 	// console.log(context.paylo)
 
+	console.log('hi dude');
+	console.log(JSON.stringify(console));
+	console.log('here we are');
 	console.log(JSON.stringify(console.payload));
 
 
