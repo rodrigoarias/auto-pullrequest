@@ -14,7 +14,21 @@ const main = async (workspace) => {
 	console.log('here we are');
 	//console.log(JSON.stringify(github.context.payload));
 	console.log(github.context.ref);
-	octokit.create_pull_request("rodrigoarias/playground-javascript", "master", "release/1", title, body);
+	//octokit.create_pull_request("rodrigoarias/playground-javascript", "master", "release/1", title, body);
+
+	try {
+		const response = await octokit.pulls.create({
+			owner: 'rodrigoarias/',
+			repo: 'playground-javascript',
+			title: title,
+			body: body,
+			head: 'refs/heads/release/1', // The branch you want to merge
+			base: 'master' // The branch you want to merge into
+		});
+		console.log('Pull request created:', response.data.html_url);
+	} catch (error) {
+		console.error('Error creating pull request:', error);
+	}
 
 
 	// const committer =  {
