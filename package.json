@@ -21,6 +21,6 @@
     "@actions/core": "^1.9.1",
     "@actions/github": "^5.0.3",
     "@octokit/rest": "^20.0.2",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^2.7.0"
   }
 }
