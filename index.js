@@ -1,11 +1,14 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
+const { Octokit } = require('@octokit/rest');
 
 const main = async (workspace) => {
 	const myToken = core.getInput('git-token');
 	const title = core.getInput('title');
 	const body = core.getInput('body');
-	const octokit = github.getOctokit(myToken);
+	//const octokit = github.getOctokit(myToken);
+
+	const octokit = new Octokit({auth: myToken});
 
 	// console.log(context.paylo)
 
