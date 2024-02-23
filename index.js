@@ -14,7 +14,7 @@ const main = async (workspace) => {
 	console.log('here we are');
 	//console.log(JSON.stringify(github.context.payload));
 	console.log(github.context.ref);
-	octokit.create_pull_request("rodrigoarias/playground-javascript", "master", "release/1", 
+	octokit.create_pull_request("rodrigoarias/playground-javascript", "master", "release/1", title, body);
 
 
 	// const committer =  {
