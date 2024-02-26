@@ -9,6 +9,12 @@ const main = async (workspace) => {
 	const body = core.getInput('body');
 	//const octokit = github.getOctokit(myToken);
 
+	const repoOwner = process.env.GITHUB_REPOSITORY_OWNER;
+	const repoName = process.env.GITHUB_REPOSITORY;
+
+	console.log('Repository Owner:', repoOwner);
+	console.log('Repository Name:', repoName);
+
 	const octokit = new Octokit(
 		{
 			auth: myToken,
@@ -20,7 +26,7 @@ const main = async (workspace) => {
 	// console.log(context.paylo)
 
 	console.log('hi dude');
-	//console.log(JSON.stringify(github.context));
+	console.log(JSON.stringify(github.context));
 	console.log('here we are');
 	//console.log(JSON.stringify(github.context.payload));
 	console.log(github.context.ref);
