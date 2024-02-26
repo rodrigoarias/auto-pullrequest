@@ -1,5 +1,8 @@
 name: 'Create Pull Request automatically'
 description: 'Auto create pull request from an implicit source to an explicit base'
+branding:
+  icon: 'git-pull-request'
+  color: 'green'
 inputs:
   git-token:
     description: 'Token able to create Pull Requests'
