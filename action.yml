@@ -1,5 +1,5 @@
-name: 'Create Pull Request'
-description: 'Auto create pull request from source to base'
+name: 'Auto create Pull Request'
+description: 'Auto create pull request from an implicit source to an explicit base'
 inputs:
   git-token:
     description: 'Token able to create Pull Requests'
