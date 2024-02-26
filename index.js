@@ -28,7 +28,7 @@ const main = async (workspace) => {
 
 	try {
 		const response = await octokit.pulls.create({
-			owner: 'rodrigoarias/',
+			owner: 'rodrigoarias',
 			repo: 'playground-javascript',
 			title: title,
 			body: body,
