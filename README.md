@@ -1,25 +1,47 @@
 # pr-to-file-javascript-action
 
-This action adds a file for a PR to a "./changes/" folder. The added file is named after the PR number (e.g: "PR#201.json") with:
-* PR Title
-* PR Message
-* PR Url
-* PR Labels
-in a json format.
+This action tries to create a Pull Request from a changed branch (which should trigger the action to another branch).
+Example:
+In a project where *main* is the default branch and should have all the changes made in "hotfix/*" branches, this could be done:
+ ```
+on:
+  push:
+    branches:
+      - 'hotfix/*'
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Alert main of changes in hotfix
+        uses: rodrigoarias/auto-pullrequest@1.0.0
+        with:
+          git-token: ${{ secrets.PUSH_TOKEN }}
+          base-branch: main
+          title: My pull request
+          body: "**Automated pull request**"
+```
+Note that the hotfix/* is not being defined. That's the idea of this action.
 
 ## Inputs
 
 ## `git-token`
 
-**Required** A GITHUB_SECRET with enough permissions to add a file.
+**Required** A GITHUB_SECRET with enough permissions to create a Pull Request.
 
-## `committer-name`
+## `base-branch`
 
-A string with the name that will be used as a committer for the added file. Default: `"github-actions[bot]"`.
+**Required** The Pull Request target
 
-## `committer-email`
+## `title`
 
-A string with the email that will be used as a committer for the added file. Default: `"github-actions[bot]@users.noreply.github.com"`.
+The PR title. Default: `"Auto created Pull Request"`.
+
+## `body`
+
+The PR body. Default: `"This PR was created by a Github Action"`.
 
 ## Outputs
 This action has no outputs.
@@ -27,7 +49,22 @@ This action has no outputs.
 ## Example usage
 
 ```
-uses: rodrigoarias/hello-world-javascript-action@v1.2
-with:
-  git-token: ${{ secrets.GITHUB_TOKEN }}
+on:
+  push:
+    branches:
+      - 'hotfix/*'
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Alert main of changes in hotfix
+        uses: rodrigoarias/auto-pullrequest@1.0.0
+        with:
+          git-token: ${{ secrets.PUSH_TOKEN }}
+          base-branch: main
+          title: My pull request
+          body: "**Automated pull request**"
 ```
