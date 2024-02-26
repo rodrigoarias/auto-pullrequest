@@ -7,13 +7,18 @@ const main = async (workspace) => {
 	const myToken = core.getInput('git-token');
 	const title = core.getInput('title');
 	const body = core.getInput('body');
+	const baseBranch = core.getInput('base-branch');
 	//const octokit = github.getOctokit(myToken);
 
 	const repoOwner = process.env.GITHUB_REPOSITORY_OWNER;
-	const repoName = process.env.GITHUB_REPOSITORY;
-
+	const repoFullName = process.env.GITHUB_REPOSITORY;
+	const repoName = repoFullName.split("/")[1];
+	const branchRef = process.env.GITHUB_REF;
+	const branchName = branchRef.split("/").slice(2).join("/"); // Remove "refs/heads/"
+	
 	console.log('Repository Owner:', repoOwner);
 	console.log('Repository Name:', repoName);
+	console.log('Branch Name:', branchName);
 
 	const octokit = new Octokit(
 		{
@@ -23,23 +28,16 @@ const main = async (workspace) => {
 			  },
 		});
 
-	// console.log(context.paylo)
-
-	console.log('hi dude');
 	console.log(JSON.stringify(github.context));
-	console.log('here we are');
-	//console.log(JSON.stringify(github.context.payload));
-	console.log(github.context.ref);
-	//octokit.create_pull_request("rodrigoarias/playground-javascript", "master", "release/1", title, body);
 
 	try {
 		const response = await octokit.pulls.create({
-			owner: 'rodrigoarias',
-			repo: 'playground-javascript',
+			owner: repoOwner,
+			repo: repoName,
 			title: title,
 			body: body,
-			head: 'release/1', // The branch you want to merge
-			base: 'master' // The branch you want to merge into
+			head: branchName, // The branch you want to merge
+			base: baseBranch // The branch you want to merge into
 		});
 		console.log('Pull request created:', response.data.html_url);
 	} catch (error) {
