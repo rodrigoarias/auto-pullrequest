@@ -32,7 +32,7 @@ const main = async (workspace) => {
 			repo: 'playground-javascript',
 			title: title,
 			body: body,
-			head: 'refs/heads/release/1', // The branch you want to merge
+			head: 'release/1', // The branch you want to merge
 			base: 'master' // The branch you want to merge into
 		});
 		console.log('Pull request created:', response.data.html_url);
