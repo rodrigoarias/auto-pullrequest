@@ -1,4 +1,4 @@
-name: 'Auto create Pull Request'
+name: 'Create Pull Request automatically'
 description: 'Auto create pull request from an implicit source to an explicit base'
 inputs:
   git-token:
