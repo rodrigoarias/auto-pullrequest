@@ -7,9 +7,6 @@ inputs:
   base-branch:
     description: 'The branch where you want your changes'
     required: true
-  source-branch:
-    description: 'The branch name where the changes are'
-    required: true
   title:
     description: 'The title of the PR'
     required: false
