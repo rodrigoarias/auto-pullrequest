@@ -27,7 +27,6 @@ const main = async (workspace) => {
 			  },
 		});
 
-	console.log(JSON.stringify(github.context));
 	console.log(`Attempting to create Pull Request from ${branchName} to ${baseBranch}`);
 
 	try {
