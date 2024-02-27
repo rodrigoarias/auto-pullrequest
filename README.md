@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Alert main of changes in hotfix
-        uses: rodrigoarias/auto-pullrequest@1.0.0
+        uses: rodrigoarias/auto-pullrequest@v1.0.1
         with:
           git-token: ${{ secrets.PUSH_TOKEN }}
           base-branch: main
@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Alert main of changes in hotfix
-        uses: rodrigoarias/auto-pullrequest@1.0.0
+        uses: rodrigoarias/auto-pullrequest@v1.0.1
         with:
           git-token: ${{ secrets.PUSH_TOKEN }}
           base-branch: main
