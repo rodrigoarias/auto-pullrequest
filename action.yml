@@ -18,6 +18,9 @@ inputs:
     description: 'The body of the PR'
     required: false
     default: 'This PR was created by a Github Action'
+outputs:
+    pull_request_url:
+      description: 'The generated Pull Request'
 runs:
   using: 'node16'
   main: 'index.js'
