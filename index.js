@@ -38,7 +38,7 @@ const main = async (workspace) => {
 			head: branchName, // The branch you want to merge
 			base: baseBranch // The branch you want to merge into
 		});
-		console.log('Pull request created');
+		console.log(`Pull request created: &{response.data.html_url}`);
 		core.setOutput("pull_request_url", response.data.html_url);
 	} catch (error) {
 		console.error('Error creating pull request:', error);
