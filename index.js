@@ -15,7 +15,7 @@ const main = async (workspace) => {
 	const repoName = repoFullName.split("/")[1];
 	const branchRef = process.env.GITHUB_REF;
 
-	branchName = !headBranch ? headBranch : branchRef.split("/").slice(2).join("/"); // Remove "refs/heads/"
+	branchName = if (headBranch !== "") ? headBranch : branchRef.split("/").slice(2).join("/"); // Remove "refs/heads/"
 	
 	console.log('Repository Owner:', repoOwner);
 	console.log('Repository Name:', repoName);
