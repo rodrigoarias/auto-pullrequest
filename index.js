@@ -8,12 +8,14 @@ const main = async (workspace) => {
 	const title = core.getInput('title');
 	const body = core.getInput('body');
 	const baseBranch = core.getInput('base-branch');
+	const headBranch = core.getInput('head-branch');
 
 	const repoOwner = process.env.GITHUB_REPOSITORY_OWNER;
 	const repoFullName = process.env.GITHUB_REPOSITORY;
 	const repoName = repoFullName.split("/")[1];
 	const branchRef = process.env.GITHUB_REF;
-	const branchName = branchRef.split("/").slice(2).join("/"); // Remove "refs/heads/"
+
+	branchName = headBranch !== "" ? headBranch : branchRef.split("/").slice(2).join("/"); // Remove "refs/heads/"
 	
 	console.log('Repository Owner:', repoOwner);
 	console.log('Repository Name:', repoName);
