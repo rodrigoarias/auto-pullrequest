@@ -13,7 +13,7 @@ inputs:
   head-branch:
     description: 'The branch where you made yout changes'
     required: false
-    default: 'The branch that triggers the action'
+    default: ''
   title:
     description: 'The title of the PR'
     required: false
